@@ -1,0 +1,204 @@
+<h3 style="text-align:center">Quản lý truy cập</h3>
+
+<input  style="border-color: black;border-radius:10px;margin-top:65px;margin-left:300px;;padding:0px;box-shadow: 2px 2px 2px black;" type="text"id="search1"placeholder="Nhập ngày" oninput="searchUser()"/>  <!--Cứ nhập là gọi hàm saerch-->
+<input  style="border-color: black;border-radius:10px;margin-top:65px;margin-left:300px;;padding:0px;box-shadow: 2px 2px 2px black;" type="text"id="search2"placeholder="Nhập tài khoản" oninput="searchUser()"/>  <!--Cứ nhập là gọi hàm saerch-->
+<input  style="border-color: black;border-radius:10px;margin-top:65px;margin-left:300px;;padding:0px;box-shadow: 2px 2px 2px black;" type="text"id="search3"placeholder="Nhập khóa học" oninput="searchUser()"/>  <!--Cứ nhập là gọi hàm saerch-->
+
+<button style="margin-bottom:15px;margin-top:25px;display:flex;margin-left:5%;box-shadow: 2px 2px 2px black;"type="button" class="btn btn-primary">
+    
+     Số lượng: <p style="margin-left:5%;margin-top:2%"id="soluong">0</p>
+</button>
+<!--list thành viên-->
+ <div id="lichsu">
+                Danh sách tài khoản
+                 <!--Form hiển thị lịch sử điểm=> sẽ bị chồng-->
+                    <div class="subnav">
+                       <h5 style="margin-left:10%;margin-top:10%;color:black">Danh sách tài khoản</h5>
+                       <p style="margin-left:-20%;color:black;margin-top:8%">nguyenhoang@gmail.com</p>
+                       <p style="margin-left:-20%;color:black">tuananhhust05@gmail.com</p>
+                       <p style="margin-left:-20%;color:black">thuykieu0703@gmail.com</p>
+                       <p style="margin-left:-20%;color:black">anhvuanh2006@gmail.com</p>
+                       <p style="margin-left:-20%;color:black">absbhd05@gmail.com</p>
+                    </div>          
+</div>
+<div id="phimbieudo">
+    <p style="margin-top:2%">Biểu đồ truy cập</p>  
+<div class="bieudo">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"> </script>
+                             
+<canvas id="plots13" style="background-color: #AFEEEE;border-radius:10px;box-shadow: 2px 2px 2px #999999;"></canvas>
+<script >
+plots13 = document.getElementById("plots13") ;
+
+
+
+var months = [ "19-5-2022", "20-5-2022", "21-5-2022","22-5-2022","23-5-2022","24-5-2022",]; 
+var traffic = [122, 120, 180,124,156,186] 
+
+
+
+new Chart(plots13, {
+
+type: 'line', 
+
+data: {
+
+labels: months, 
+
+datasets: [{
+
+data: traffic, 
+
+backgroundColor:'white',
+
+borderColor: "blue",
+
+fill: false, 
+}]
+
+},
+
+});
+</script>
+</div>
+</div>
+
+<table style="margin-top:100px"class="table" >
+    <tr style="box-shadow: 2px 2px 2px #999999;border-color: #87CEEB;">
+        <td>Thời gian</td>
+        <td>Tài khoản</td>
+        <td>Khóa học</td>
+   </tr>
+  <tbody id="Tbody">
+  {{#each result}}
+   <tr style="box-shadow: 2px 2px 2px #999999;border-color: #87CEEB;">
+        <td>{{this.Time}}</td>
+        <td>{{this.taikhoan}}</td>
+        <td>{{this.khoahoc}}</td>
+   </tr>
+   {{/each}} 
+   </tbody>
+</table>
+
+<!--css cho list thành viên-->
+<style>
+    
+/*css hover riêng*/
+    td:hover{
+        background-color: #FFFF00;
+        color:white;
+    }
+    
+    /*phím show điểm 3 lần gần nhất*/
+    #lichsu{
+        height:5%;
+        width:20%;
+        margin-left:3px;
+        text-align: center;
+        margin-top:3%;
+        border-radius: 5px;
+        background-color: #87CEEB;
+        color:white;
+        box-shadow: 2px 2px 2px #999999;
+        border-color: #87CEEB;
+    }
+    .subnav{
+        position:fixed;  /*fix là đứng yên, absolute là di chuyển theo*/
+        left:20%;
+        top:30%;
+        width:20%;
+        height:40%;
+        display:none;
+        border-radius: 6px;
+        background-color: white;
+        box-shadow: 2px 2px 2px #999999;
+    }
+     #lichsu:hover .subnav {  /*Khi hover thằng cha thì nó ra thằng con */
+        display:block;  /*xóa thằng display:none cửa subnav*/
+        background-color: white;
+        color:black;
+    }
+    /*phải là cha con*/
+     #phimbieudo:hover .bieudo {  /*Khi hover thằng li thì hover thằng subnav*/
+        display:flex;  /*xóa thằng display:none cửa subnav*/
+       
+    }
+    #phimbieudo{
+        height:3%;
+        width:10%;
+        margin-left:3px;
+        text-align: center;
+        margin-top:3%;
+        border-radius: 5px;
+        background-color: #87CEEB;
+        color:white;
+        box-shadow: 2px 2px 2px #999999;
+        border-color: #87CEEB;
+    }
+    .bieudo{
+        width:60%;
+        height:30%;
+        display:none;
+        position:absolute;
+        left:10%;
+        top:20%;
+      
+    }
+</style>
+
+
+<!--chức năng tìm kiếm-->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>  <!--Nhúng thư viện Jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+<script>
+    // tạo dữ liệu gốc 
+
+    // lấy data từ bảng 
+        // $ nghĩa là select 
+        //.each: đối với mỗi hàng ta thực hiện hàm 
+     
+  var x=[]; // tạo 1 mảng x 
+        $('#Tbody tr').each(function(){   // chạy trên các hàng là con của tbody; cháu của table 
+              var Time=$(this).find("td").eq(0).html();   // lấy dữ liệu cột 0 
+              var taikhoan=$(this).find("td").eq(1).html();
+              var khoahoc=$(this).find("td").eq(2).html();
+              x.push({Time:Time,taikhoan:taikhoan,khoahoc:khoahoc});// thêm vào mảng x đối tượng có 3 thuộc tính; lần lượt gán giá trị cho chúng 
+         });
+         //console.log(x);
+
+   function renderUser(array)  // truyền vào 1 mảng để linh hoạt hiển thị
+   {
+     let element;  // ép ngang 
+  
+     array.map(value=>{  // tạo văn bản từ mảng 
+       element =element+'<tr>'
+        +'<td>'+value.Time +'</td>'
+        +'<td>'+value.taikhoan +'</td>'
+        +'<td>'+value.khoahoc +'</td>'
+          +'</tr>'
+     })
+  
+     document.getElementById("Tbody").innerHTML=element;  // thay thế 
+   }
+   function searchUser(){
+        let valueSearchInput1=document.getElementById("search1").value;// lây data ô tìm kiếm 
+        let valueSearchInput2=document.getElementById("search2").value;// lây data ô tìm kiếm 
+        let valueSearchInput3=document.getElementById("search3").value;// lây data ô tìm kiếm 
+        // lọc dữ liệu  và trả về 
+        let userSearch=x.filter(value=>{
+          return value.Time.toUpperCase().includes(valueSearchInput1.toUpperCase()) // tìm trong cột Name
+        })
+        let userSearch2=userSearch.filter(value=>{
+          return value.taikhoan.toUpperCase().includes(valueSearchInput2.toUpperCase()) // tìm trong cột Name
+        })
+        
+
+        let userSearch3=userSearch2.filter(value=>{
+          return value.khoahoc.toUpperCase().includes(valueSearchInput3.toUpperCase()) // tìm trong cột Name
+        })
+
+        document.getElementById("soluong").innerHTML=String(userSearch3.length);
+        // lấy được dữ liệu rồi giờ hiển thị bằng hàm renderUser 
+        renderUser(userSearch3)
+        }
+</script>

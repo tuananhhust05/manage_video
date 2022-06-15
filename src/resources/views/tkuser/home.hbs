@@ -1,0 +1,40 @@
+
+<!--video nền-->
+<style>
+      .video{
+         width: 100%;
+         height: 100%;
+         position:relative;
+     }
+</style>
+
+<div class="video">
+    <video style="width:100%;height:100%"type="video/mp4" autoplay muted loop >
+        <source src="/img/videouser.mp4">
+    </video>
+</div>
+<div style="margin-left:100px;position:absolute;top:20%"class="mt-4">  <!--Học về bootstrap-->
+    <div class="row">
+       
+       {{#each courses}}
+         <div style="margin-top:20px"class="col-sm-6 col-lg-4">
+             <a href="/tkuser/show/{{this.slug}}">
+             <div class="card" style="width: 18rem;">
+                 <a href="/tkuser/show/{{this.slug}}">
+                 <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+                 </a>
+                 <div class="card-body">
+                     <!--xem bảng-->
+                      <a href="/tkuser/show/{{this.slug}}">
+                      <h5 class="card-title">{{this.name}}</h5>
+                      <p class="card-text">{{this.description}}</p>
+                      </a>     
+                 </div>
+              </div>
+              </a>
+         </div>
+        {{/each}}  <!--cú pháp đóng-->
+
+       
+    </div>
+</div>

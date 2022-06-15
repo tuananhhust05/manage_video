@@ -1,0 +1,80 @@
+
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="/themify-icons/themify-icons.css">
+<style>
+    /*css sidebar*/
+    .sidebar{
+        position:fixed;
+        background-color: red;
+        width:7%;
+        top:10%;
+        height:50%;
+        left:0%;
+        border-radius: 5px;
+    }
+    .chucnang{
+        margin-top:10%;
+        padding: 5px 0px;
+        text-align: center;
+        height:13%;
+        width:70%;
+        display:block;
+        border-radius: 8px;
+    }
+    .chucnang:hover{
+        background-color: #A9A9A9;
+    }
+     .video{
+         width: 100%;
+         height: 100%;
+         position:relative;
+     }
+</style>
+ 
+<!--video nền-->
+<div class="video">
+    <video style="width:100%;height:100%"type="video/mp4" autoplay muted loop >
+        <source src="/img/video.mp4">
+    </video>
+</div>
+
+
+
+
+<div style="margin-left:150px;position:absolute;top:20%"class="mt-4">  <!--Học về bootstrap-->
+    <div class="row">
+       
+       {{#each courses}}
+         <div style="margin-top:20px;"class="col-sm-6 col-lg-4">
+             <a href="/home/{{this.slug}}">
+             <div class="card" style="width: 18rem;">
+                 <a href="/home/{{this.slug}}">
+                 <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+                 </a>
+                 <div class="card-body">
+                     <!--xem bảng-->
+                      <a href="/home/{{this.slug}}">
+                      <h5 class="card-title">{{this.name}}</h5>
+                      <p class="card-text">{{this.description}}</p>
+                      <p class="card-text">Đường dẫn:{{this.slug}}</p>
+                      </a>
+                      <!--update bảng-->
+                      <a href="/crudcourse/editcourse/{{this.slug}}" class="btn btn-primary">Update</a>  <!--link dẫn đến phần get update-->
+                      
+                      <!--delete khóa học-->
+                      <form style="margin-top:2%" method="post" action="/crudcourse/deletecourse/{{this.slug}}">
+                          <button type="submit" class="btn btn-danger">Delete</button>
+                      </form>
+                       
+                 </div>
+              </div>
+              </a>
+         </div>
+        {{/each}}  <!--cú pháp đóng-->
+    </div>
+</div>
+<button style="margin-bottom:15px;margin-top:15px;position:absolute;top:80%"type="button" class="btn btn-primary" style="margin-top:30px">
+    <a href="/home/createcourse"style="text-decoration:none;color:white">
+      Thêm khóa học 
+    </a>
+</button>

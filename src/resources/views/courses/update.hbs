@@ -1,0 +1,23 @@
+<div class="mt-4">
+    <h3 style="text-align:center">Chỉnh sửa thông tin</h3>
+</div>
+ {{#each result}}
+<form style="position:absolute; width:50%;left:25%"method="post" action="/crudcourse/storeupdatecourse"> <!--xử lý riêng --> 
+  <div class="form-group">
+      
+    <label for="exampleInputEmail1">Tên khóa học</label>
+    <input type="text" class="form-control" id="name"name="name"value="{{this.name}}" required>
+    
+    <label for="exampleInputEmail1">Mô tả khóa học</label>
+    <input type="text" class="form-control" id="description"name="description"value="{{this.description}}" required>
+    
+    <label for="exampleInputEmail1">Nhập link khóa học</label>
+    <input type="text" class="form-control" id="image"name="image"value="{{this.image}}" required>
+    
+    
+    <input type="hidden" class="form-control" id="slug"name="slug"value="{{this.slug}}" required>
+    
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+  {{/each}}

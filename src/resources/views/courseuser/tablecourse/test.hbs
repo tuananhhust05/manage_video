@@ -1,0 +1,32 @@
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+<button style="height:5%;width:10%;position:absolute;left:5%;text-align: center;margin-top:25px;border-radius: 5px;background-color: #87CEEB;color:white;box-shadow: 2px 2px 2px #999999;border-color: #87CEEB; ">
+  <a style="text-decoration:none;color:white"href="/tkuser/{{mail.name}}"> <--Home</a>
+</button>
+
+<form style="position:absolute;top:20%;width:50%;left:25%"method="post" action="/tkuser/chambai">
+  {{#each result}}
+  <div class="form-group">
+    <label style="display:block;">{{this.thutu}}.{{this.CauHoi}}</label> <!--số thứ tự tùy biến theo đề thi-->
+    <label style="display:block;">A.{{this.a}}</label>
+    <label style="display:block;">B.{{this.b}}</label>
+    <label style="display:block;">C.{{this.c}}</label>
+    <label style="display:block;">D.{{this.d}}</label>
+    <select class="form-control"  name="traloi">  <!--name tùy biến theo đề thi--> 
+      <option>a</option>
+      <option>b</option>
+      <option>c</option>
+      <option>d</option>
+    </select>
+    <input type="hidden" class="form-control" name="da"value="{{this.dapan}}" required> <!--tên và giá trị đáp án tùy biên-->
+    <input type="hidden" class="form-control" name="soluong"value="{{this.soluong}}" required> <!--tên và giá trị đáp án tùy biên-->
+    <input type="hidden" class="form-control" name="tenbai"value="{{this.tenbai}}" required>
+    <input type="hidden" class="form-control" name="khoahoc"value="{{this.khoahoc}}" required>
+  </div>
+  {{/each}} 
+  <button type="submit" class="btn btn-primary"style="margin-top:20px">Nộp bài</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

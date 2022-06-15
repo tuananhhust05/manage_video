@@ -1,0 +1,100 @@
+<!-- CSS only -->
+
+<h1 style="text-align:center;box-shadow: 2px 2px 2px #C0C0C0;">  Course {{slug.name}}</h1>
+<body style="background-color:#696969">
+<button style="height:5%;width:10%;position:absolute;left:5%;text-align: center;margin-top:25px;border-radius: 5px;background-color: #87CEEB;color:white;box-shadow: 2px 2px 2px #999999;border-color: #87CEEB; ">
+  <a style="text-decoration:none;color:white"href="/tkuser/{{mail.name}}"> <--Home</a>
+</button>
+<button style="height:5%;width:25%;position:absolute;left:37%;text-align: center;margin-top:25px;border-radius: 5px;background-color: #FF0000;color:white;box-shadow: 2px 2px 2px #999999;border-color: #FF0000; ">
+                Grade: {{diemtrungbinh.diem}}
+</button>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<table id="bang"style="margin-top:100px" class="table">
+  {{#each tablecourse}}
+   <tr style="box-shadow: 2px 2px 2px #999999;border-color: #87CEEB;">
+        <td>
+            <div >
+                
+            <video style="height:50%;width:50%;margin-left:120px;border-radius: 5px;box-shadow: 2px 2px 2px #999999;"type="video/mp4" src="{{this.Image}}"controls>
+               
+            </video>
+            </div>
+        </td>
+        <td style="width:30%">
+            <p style="color:white;background-color:#A9A9A9;margin-top:20px;width:100%;box-shadow: 2px 2px 2px #999999;border-color: #87CEEB;">{{this.TenBai}}</p>
+    
+            <button style="height:5%;width:100%;margin-left:3px;text-align: center;margin-top:3%;border-radius: 5px;background-color: #87CEEB;color:white;box-shadow: 2px 2px 2px #999999;border-color: #87CEEB;; ">
+                {{this.TinhTrang}}  <!--dữ liệu được tạo ra ở back-end; không qua database-->
+            </button>
+            <button style="text-decoration:none;color:white;height:5%;width:100%;margin-left:3px;text-align: center;margin-top:3%;border-radius: 5px;background-color: #87CEEB;color:white;box-shadow: 2px 2px 2px #999999;border-color: #87CEEB; ">
+                <a style="text-decoration:none;color:white" href="/tkuser/{{this.tenkhoa}}/{{this.TenBai}}">Test your grade</a>          
+            </button>
+            <div id="lichsu">
+                Lịch sử
+                 <!--Form hiển thị lịch sử điểm=> sẽ bị chồng-->
+                    <div class="subnav">
+                       <h5 style="margin-left:10%;margin-top:10%;color:black">Lịch sử điểm</h5>
+                       <p style="margin-left:-20%;color:black;margin-top:8%">Điểm kiểm tra: {{this.lanthunhat}} </p>
+                       <p style="margin-left:-20%;color:black">Điểm kiểm tra: {{this.lanthunhai}}</p>
+                       <p style="margin-left:-20%;color:black">Điểm kiểm tra: {{this.lanthuba}}</p>
+                       <p style="margin-left:-20%;color:black">Điểm kiểm tra: {{this.lanthutu}}</p>
+                       <p style="margin-left:-20%;color:black">Điểm kiểm tra: {{this.lanthunam}}</p>
+                    </div>          
+            </div>
+            <button  style="height:5%;width:100%;margin-left:3px;text-align: center;margin-top:3%;border-radius: 5px;background-color: #FF0000;color:white;box-shadow: 2px 2px 2px #999999;border-color: #FF0000; ">
+                 {{this.Diem}}
+            </button>
+
+        </td>
+
+   </tr>
+
+
+   {{/each}} 
+</table>
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+
+<style>
+    
+/*css hover riêng*/
+    td:hover{
+        background-color: #FFFF00;
+        color:white;
+    }
+    
+    /*phím show điểm 3 lần gần nhất*/
+    #lichsu{
+        height:5%;
+        width:100%;
+        margin-left:3px;
+        text-align: center;
+        margin-top:3%;
+        border-radius: 5px;
+        background-color: #87CEEB;
+        color:white;
+        box-shadow: 2px 2px 2px #999999;
+        border-color: #87CEEB;
+    }
+    .subnav{
+        position:fixed;  /*fix là đứng yên, absolute là di chuyển theo*/
+        left:60%;
+        top:30%;
+        width:20%;
+        height:40%;
+        display:none;
+        border-radius: 6px;
+        background-color: white;
+        box-shadow: 2px 2px 2px #999999;
+    }
+     #lichsu:hover .subnav {  /*Khi hover thằng cha thì nó ra thằng con */
+        display:block;  /*xóa thằng display:none cửa subnav*/
+        background-color: white;
+        color:black;
+    }
+    /*phải là cha con*/
+</style>
+
